@@ -1,0 +1,255 @@
+@import "../_base/theme";
+@import "../Button/index";
+
+.field {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0.75rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+
+  & .field__label {
+    width: 100%;
+    font-size: 1.083333333rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    margin-right: 1rem;
+  }
+  & .field__requiredMark {
+    @include themed() {
+      color: t(redDark);
+    }
+  }
+  & .field__group {
+    position: relative;
+    width: 100%;
+  }
+
+  &.field_inline {
+    flex-direction: row;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    & .field__label {
+      width: 33%;
+    }
+    & .field__group {
+      width: 77%;
+    }
+  }
+
+  & .field__description {
+    display: none;
+    font-size: 0.83333333rem;
+    line-height: 1rem;
+    margin-top: 0.25rem;
+  }
+
+  & .field__descriptionIcon {
+    vertical-align: text-top;
+    display: none;
+  }
+
+  &:hover,
+  &:focus {
+    @include themed() {
+      background-color: t(neutralLighterAlt);
+      color: t(neutralBlack);
+    }
+  }
+  &.field_hasWarning {
+    & .field__description {
+      display: block;
+      @include themed() {
+        color: t(yellowDark);
+      }
+    }
+    & .field__descriptionIcon {
+      display: inline;
+    }
+  }
+  &.field_hasError {
+    & .field__label {
+      @include themed() {
+        color: t(redDark);
+      }
+    }
+    & .input {
+      @include themed() {
+        border-color: t(redDark) !important; // overwrite disabled
+      }
+    }
+    & .field__description {
+      display: block;
+      @include themed() {
+        color: t(redDark);
+      }
+    }
+  }
+  &.field_isBusy {
+    & .input__icon {
+      pointer-events: none;
+    }
+    & .input__icon .icon {
+      animation: spin 0.7s linear infinite;
+    }
+  }
+  &.field_disabled {
+    pointer-events: none;
+    & .field__label,
+    & .input__icon {
+      @include themed() {
+        color: t(neutralTertiary);
+      }
+    }
+    & .input {
+      @include themed() {
+        background-color: t(neutralLight);
+        border-color: transparent;
+      }
+    }
+    & .input__control {
+      @include themed() {
+        color: t(neutralSecondaryAlt);
+      }
+    }
+  }
+
+  &:hover:not(.field_hasError),
+  &:focus:not(.field_hasError) {
+    & .input {
+      @include themed() {
+        border-color: t(neutralSecondaryAlt);
+      }
+    }
+  }
+
+  &:focus-within,
+  .field_focus-within {
+    @include themed() {
+      background-color: t(themeLight);
+      color: t(themeDark);
+    }
+    & .input {
+      @include themed() {
+        border-color: t(themeDark) !important; // overwrite hover
+      }
+    }
+  }
+
+  & .field__popup {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    //display: none;
+
+    @extend %depth-8;
+  }
+  & .field__popupContent {
+    position: relative;
+    max-height: 6 * 2rem;
+    overflow-y: auto;
+    z-index: 1000;
+    @include themed() {
+      background-color: t(neutralWhite);
+    }
+  }
+  & .field__popupEmptyMessage {
+    @include themed() {
+      padding: 1rem;
+      text-align: center;
+      color: t(neutralPrimary);
+    }
+  }
+  & .field__expandButton {
+    @extend .btn;
+    position: absolute;
+    font-size: 1rem;
+    top: 0;
+    padding: 0;
+    right: -2rem;
+    width: 2rem;
+    height: 2rem;
+    border-left: 0;
+    z-index: 10;
+    cursor: pointer;
+  }
+  transition: background-color 0.25s linear;
+  &.field_calculated {
+    @include themed() {
+      transition: none;
+      background-color: t(greenLight);
+    }
+  }
+}
+
+.input {
+  display: flex;
+  border-width: 1px;
+  border-style: solid;
+  line-height: calc(2rem - 2px);
+  @include themed() {
+    background-color: t(neutralWhite);
+    border-color: t(neutralTertiary);
+  }
+
+  & .input__prefix {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    @include themed() {
+      background-color: t(neutralTertiary);
+      color: t(neutralPrimary);
+    }
+  }
+  & .input__control {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    flex-grow: 1;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 1.083333333rem;
+    line-height: calc(2rem - 4px);
+    @include themed() {
+      color: t(neutralPrimary);
+    }
+  }
+  & .input__icon {
+    @extend .btnBase;
+    text-align: center;
+    width: 2rem;
+    line-height: 1.5rem;
+    position: relative;
+
+    background-color: transparent;
+    border-color: transparent;
+
+    & .icon {
+      display: block; // spinning centered
+    }
+    &:hover,
+    &:focus {
+      cursor: pointer;
+    }
+  }
+}
+
+.react-datepicker {
+  font-size: 13px !important;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
+  z-index: 1;
+}
+.react-datepicker__day-name,
+.react-datepicker__day,
+.react-datepicker__time-name {
+  width: 2rem !important;
+  line-height: 2rem !important;
+}
+.react-datepicker__current-month,
+.react-datepicker-time__header,
+.react-datepicker-year-header {
+  font-size: 1.1666667rem !important;
+  @include themed() {
+    color: t(themeDark) !important;
+  }
+}

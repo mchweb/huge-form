@@ -1,0 +1,20 @@
+@import "../_base/theme";
+
+.link {
+  text-decoration: none;
+  @include themed() {
+    color: t(themePrimary);
+  }
+
+  &:hover,
+  &:focus {
+    @include themed() {
+      color: t(themeSecondary);
+    }
+  }
+  &:active {
+    @include themed() {
+      color: t(themeDark);
+    }
+  }
+}

@@ -1,0 +1,57 @@
+@import "../_base/theme";
+.dataTable {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+
+  @include themed() {
+    background-color: t(neutralWhite);
+    color: t(neutralPrimary);
+  }
+
+  & .dataTable__row:nth-child(2n + 1) {
+    @include themed() {
+      background-color: t(neutralLighterAlt);
+    }
+  }
+
+  & .dataTable__row {
+    display: table-row;
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      @include themed() {
+        background-color: t(themeLight);
+        color: t(themeDark);
+      }
+    }
+    &:active,
+    &.dataTable__row_isActive {
+      @include themed() {
+        background-color: t(themeDark);
+        color: t(neutralWhite);
+      }
+    }
+  }
+  & .dataTable__cell {
+    display: table-cell;
+    vertical-align: top;
+    line-height: 1.5rem;
+    padding: 0.25rem 0.75rem;
+  }
+  & .dataTable__header {
+    text-align: left;
+    font-weight: 600;
+    line-height: 1.5rem;
+    padding: 0.5rem 0.75rem;
+    & .dataTable__cell {
+      cursor: default;
+      position: sticky;
+      top: 0;
+      @include themed() {
+        color: t(themeDark);
+        background-color: t(themeTertiary);
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+@import "theme";
+@import "fonts";
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 12px;
+}
+body {
+  margin: 0;
+}
+body,
+input,
+button,
+label {
+  font-family: "Segoe UI";
+  font-size: 1.083333333rem;
+  line-height: 1.5rem;
+  -webkit-font-smoothing: antialiased;
+}
+
+.hugeForm {
+  min-height: 100vh;
+  @include themed() {
+    color: t(neutralPrimary);
+  }
+  @include themed() {
+    background-color: t(neutralLighter);
+  }
+}

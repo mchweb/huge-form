@@ -1,0 +1,20 @@
+@import "../_base/theme";
+
+.navPanel {
+  position: sticky;
+  top: 0.5rem;
+}
+.navPanel .card__content {
+  padding: 0.75rem;
+  & .link {
+    display: block;
+  }
+}
+
+.navPanel__footer {
+  display: flex;
+  margin-top: 1rem;
+  & .btn:first-child {
+    margin-right: 0.5rem;
+  }
+}

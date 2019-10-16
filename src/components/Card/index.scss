@@ -1,0 +1,79 @@
+@import "../_base/theme";
+@import "../Button/index";
+
+.card {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+
+  @extend %depth-4;
+  @include themed() {
+    background-color: t(neutralWhite);
+  }
+
+  & .card__header {
+    display: flex;
+    align-items: center;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    @include themed() {
+      background-color: t(themeTertiary);
+    }
+  }
+
+  & .card__title {
+    margin: 0;
+    margin-left: 0.5rem;
+    font-size: 1.1666667rem;
+    line-height: 2.5rem;
+    font-weight: 600;
+    @include themed() {
+      color: t(themeDark);
+    }
+  }
+
+  & .card__action {
+    @extend .btn;
+    font-size: 1rem;
+    line-height: 1.5em;
+    text-align: center;
+    padding: 0 !important; //overwrite btn
+    min-height: 2rem;
+    min-width: 2rem;
+    margin-right: 0.25rem;
+    cursor: pointer;
+  }
+
+  & .card__action_secondary {
+    @include themed() {
+      color: t(redDark);
+    }
+  }
+
+  & .card,
+  & .tabs {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  &.card_isActive {
+    & .card__action {
+      border: none;
+    }
+  }
+
+  &.card_expandable:not(.card_isExpanded) {
+    box-shadow: none;
+    background-color: transparent;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+    & .card__content {
+      display: none;
+    }
+  }
+  &.card_expandable:not(.card_isActive) {
+    & .card__header {
+      background-color: transparent;
+      padding: 0;
+    }
+  }
+}

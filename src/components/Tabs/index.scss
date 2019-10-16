@@ -1,0 +1,112 @@
+@import "../_base/theme";
+
+.tabs {
+  position: relative;
+  margin-top: 0.5rem;
+  padding-bottom: 0.75rem;
+  z-index: 0;
+  .tabsNav {
+    & .tabsNav__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+    }
+    & .tabsNav__item {
+      display: block;
+      cursor: pointer;
+      margin: 0;
+      padding: 0;
+      border: none;
+      outline: none;
+      font-size: 1.1666667rem;
+      line-height: 2.5rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      background-color: transparent;
+      @include themed() {
+        color: t(neutralPrimary);
+      }
+      &:hover,
+      &:focus {
+        @include themed() {
+          color: t(themeDark);
+          background-color: t(themeLight);
+        }
+      }
+      &:active {
+        @include themed() {
+          background-color: t(themeDark);
+          color: t(neutralWhite);
+        }
+      }
+      &.tabsNav__item_isActive {
+        position: relative;
+        cursor: default;
+        z-index: 50;
+        font-weight: 600;
+        margin-right: 0.125rem;
+        margin-left: 0.125rem;
+        padding-left: 0.875rem;
+        padding-right: 0.875rem;
+        @extend %depth-4;
+        @include themed() {
+          color: t(themeDark);
+          background-color: t(neutralWhite);
+        }
+        &:before {
+          content: "";
+          position: absolute;
+          pointer-events: none;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: -0.5rem;
+          height: auto;
+          border-width: 0.5rem;
+          border-style: solid;
+          @include themed() {
+            border-color: t(neutralWhite);
+          }
+        }
+        &:first-child {
+          margin-left: 0;
+          padding-right: 1rem;
+        }
+      }
+    }
+  }
+  & .tabs__wrapper {
+    @extend %depth-4;
+    @include themed() {
+      background-color: t(neutralWhite);
+    }
+  }
+  & .tabs__content {
+    position: relative;
+    z-index: 100;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+
+    @include themed() {
+      background-color: t(neutralWhite);
+    }
+  }
+  & .tabs__shadow {
+    position: absolute;
+    left: 0.25rem;
+    right: 0.25rem;
+    top: 2.75rem;
+    height: 0.75rem;
+    border-radius: 25%;
+    @extend %depth-16;
+
+    z-index: 10;
+    transform: rotate(180deg);
+  }
+  & .card,
+  & .tabs {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}

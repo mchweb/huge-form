@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "FabricMDL2Icons-6";
+  src: url("./fabricmdl2icons-2.47.woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon {
+  //font-size: 1rem;
+  vertical-align: middle;
+  font-style: normal;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  font-family: FabricMDL2Icons-6;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
