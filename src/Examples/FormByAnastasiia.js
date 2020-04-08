@@ -103,6 +103,38 @@ const calculator = createDecorator(
         }
       },
     },
+  },
+  {
+    field: "list2",
+    updates: {
+      lookup5: (values, allValues) => {
+        if (!values || values.inputValue === "") {
+          console.log("empty value, use default data");
+          return {};
+        }
+        if (values.inputValue === "Set1") {
+          console.log("use data_2");
+          return {
+            data: data_2,
+            columnConfig: columnConfig_2,
+            textField: "username",
+            calculated: true,
+          };
+        }
+        if (values.inputValue === "Set2") {
+          console.log("use data 3");
+          return {
+            data: data_3,
+            columnConfig: columnConfig_3,
+            textField: "email",
+            calculated: true,
+          };
+        }
+
+        console.log("use default data");
+        return {};
+      },
+    },
   }
 );
 
@@ -135,7 +167,7 @@ const App = () => {
           }) => (
             <form onSubmit={handleSubmit} autoComplete="nope">
               <Row>
-                <Col size={5}>
+                <Col size={4}>
                   <Card title="Group1">
                     <Field
                       name="lookup1"
@@ -164,7 +196,7 @@ const App = () => {
                     <WarningEngine mutators={mutators} />
                   </Card>
                 </Col>
-                <Col size={5}>
+                <Col size={4}>
                   <Card title="Group2">
                     <Field
                       name="lookup4"
@@ -185,7 +217,24 @@ const App = () => {
                       label="Date"
                       component={DateFieldAdapter}
                     />
-                    <WarningEngine mutators={mutators} />
+                  </Card>
+                </Col>
+                <Col size={4}>
+                  <Card title="Group3">
+                    <Field
+                      name="list2"
+                      label="Dropdown set"
+                      component={DropdownFieldAdapter}
+                      options={["Set1", "Set2"]}
+                    />
+                    <Field
+                      name="lookup5"
+                      label="Lookup_5"
+                      component={SearchFieldAdapter}
+                      textField={""}
+                      data={[]}
+                      columnConfig={columnConfig}
+                    />
                   </Card>
                 </Col>
               </Row>

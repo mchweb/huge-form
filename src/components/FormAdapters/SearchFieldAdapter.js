@@ -8,6 +8,8 @@ const SearchFieldAdapter = ({
   required,
   inputProps,
   textField,
+  data,
+  columnConfig,
   ...rest
 }) => {
   //TODO do not change input, make a new variable
@@ -18,6 +20,15 @@ const SearchFieldAdapter = ({
       }
     }
   }
+
+  const calculatedData =
+    input.value && input.value.data ? input.value.data : data;
+  const calculatedColumnConfig =
+    input.value && input.value.textField
+      ? input.value.columnConfig
+      : columnConfig;
+  const calculatedTextField =
+    input.value && input.value.textField ? input.value.textField : textField;
 
   return (
     <SearchField
@@ -34,12 +45,14 @@ const SearchFieldAdapter = ({
       hasWarning={meta.data.warning}
       hasError={meta.touched && meta.error}
       description={meta.error || meta.data.warning}
-      textField={textField}
+      textField={calculatedTextField}
       onChange={(value) =>
         input.onChange({ inputValue: value[textField], fieldValue: value })
       }
       onType={(value) => input.onChange({ inputValue: value })}
       onBlur={(event) => input.onBlur(event)}
+      data={calculatedData}
+      columnConfig={calculatedColumnConfig}
       {...rest}
     />
   );
