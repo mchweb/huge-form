@@ -10,6 +10,15 @@ const SearchFieldAdapter = ({
   textField,
   ...rest
 }) => {
+  //TODO do not change input, make a new variable
+  if (rest && rest.data) {
+    if (input.value && input.value.inputValue) {
+      if (!rest.data.find((row) => row[textField] === input.value.inputValue)) {
+        input.value.inputValue = "";
+      }
+    }
+  }
+
   return (
     <SearchField
       disabled={input.value ? input.value.disabled : disabled}
@@ -20,17 +29,17 @@ const SearchFieldAdapter = ({
       }
       inputProps={{
         ...input,
-        ...inputProps
+        ...inputProps,
       }}
       hasWarning={meta.data.warning}
       hasError={meta.touched && meta.error}
       description={meta.error || meta.data.warning}
       textField={textField}
-      onChange={value =>
+      onChange={(value) =>
         input.onChange({ inputValue: value[textField], fieldValue: value })
       }
-      onType={value => input.onChange({ inputValue: value })}
-      onBlur={event => input.onBlur(event)}
+      onType={(value) => input.onChange({ inputValue: value })}
+      onBlur={(event) => input.onBlur(event)}
       {...rest}
     />
   );
