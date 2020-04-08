@@ -9,26 +9,32 @@ const DropdownFieldAdapter = ({
   inputProps,
   ...rest
 }) => {
+  const requiredCalculated =
+    input.value && typeof input.value.required !== "undefined"
+      ? input.value.required
+      : required;
+
   return (
     <DropdownField
       disabled={input.value ? input.value.disabled : disabled}
-      required={
-        input.value && typeof input.value.required !== "undefined"
-          ? input.value.required
-          : required
-      }
+      required={requiredCalculated}
       inputProps={{
         ...input,
-        ...inputProps
+        ...inputProps,
       }}
       hasWarning={meta.data.warning}
       hasError={meta.touched && meta.error}
       description={meta.error || meta.data.warning}
-      onChange={value =>
+      onChange={(value) =>
         input.onChange({ inputValue: value, fieldValue: value })
       }
-      onType={value => input.onChange({ inputValue: value })}
-      onBlur={event => input.onBlur(event)}
+      onType={(value) =>
+        input.onChange({
+          inputValue: value,
+          required: requiredCalculated,
+        })
+      }
+      onBlur={(event) => input.onBlur(event)}
       {...rest}
     />
   );

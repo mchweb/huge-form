@@ -180,3 +180,27 @@ export const data_3 = [
     website: "kale.biz",
   },
 ];
+
+export const columnConfig_4 = [
+  { key: "name", name: "Name", width: 70 },
+  { key: "date", name: "Date", width: 100 },
+];
+
+export const data_4 = [
+  {
+    name: "name_1",
+    date: "2020-04-07",
+  },
+  {
+    name: "name_2",
+    date: "2019-03-12",
+  },
+  {
+    name: "name_3",
+    date: "2017-10-14",
+  },
+  {
+    name: "name_4",
+    date: "2020-02-01",
+  },
+];

@@ -23,10 +23,12 @@ import {
   columnConfig_1,
   columnConfig_2,
   columnConfig_3,
+  columnConfig_4,
   data,
   data_1,
   data_2,
   data_3,
+  data_4,
 } from "./sampleData";
 
 const WarningEngine = ({ mutators: { setFieldData } }) => (
@@ -45,31 +47,64 @@ const WarningEngine = ({ mutators: { setFieldData } }) => (
   />
 );
 
-const calculator = createDecorator({
-  field: "lookup1",
-  updates: {
-    lookup2: (values, allValues) => {
-      const inputVal =
-        values && values.fieldValue && values.inputValue !== ""
-          ? values.fieldValue.username
-          : "";
-      return {
-        inputValue: inputVal,
-        calculated: true,
-      };
-    },
-    lookup3: (values, allValues) => {
-      if (!allValues.lookup1 || allValues.lookup1.inputValue === "") {
-        return { inputValue: "", calculated: true };
-      }
-      const newValue = {
-        inputValue: values.fieldValue ? values.fieldValue.name : "",
-        calculated: true,
-      };
-      return newValue;
+const calculator = createDecorator(
+  {
+    field: "lookup1",
+    updates: {
+      lookup2: (values, allValues) => {
+        const inputVal =
+          values && values.fieldValue && values.inputValue !== ""
+            ? values.fieldValue.username
+            : "";
+        return {
+          inputValue: inputVal,
+          calculated: true,
+        };
+      },
+      lookup3: (values, allValues) => {
+        if (!allValues.lookup1 || allValues.lookup1.inputValue === "") {
+          return { inputValue: "", calculated: true };
+        }
+        const newValue = {
+          inputValue: values.fieldValue ? values.fieldValue.name : "",
+          calculated: true,
+        };
+        return newValue;
+      },
     },
   },
-});
+  {
+    field: "lookup4",
+    updates: {
+      list: (inputValue, allValues) => {
+        if (!inputValue || inputValue.inputValue === "") {
+          return {};
+        }
+        const newValue = {
+          inputValue: "",
+          calculated: true,
+          required: true,
+        };
+        return newValue;
+      },
+      date: (inputValue, allValues) => {
+        if (
+          !inputValue ||
+          !inputValue.fieldValue ||
+          !inputValue.fieldValue.date
+        ) {
+          return {};
+        }
+        const inputDate = new Date(inputValue.fieldValue.date);
+        if (inputDate) {
+          return { fieldValue: inputDate, calculated: true };
+        } else {
+          return {};
+        }
+      },
+    },
+  }
+);
 
 const validate = (values) => {
   const errors = {};
@@ -125,6 +160,30 @@ const App = () => {
                       textField={"name"}
                       data={data_3}
                       columnConfig={columnConfig_3}
+                    />
+                    <WarningEngine mutators={mutators} />
+                  </Card>
+                </Col>
+                <Col size={5}>
+                  <Card title="Group2">
+                    <Field
+                      name="lookup4"
+                      label="Lookup_4"
+                      component={SearchFieldAdapter}
+                      textField={"name"}
+                      data={data_4}
+                      columnConfig={columnConfig_4}
+                    />
+                    <Field
+                      name="list"
+                      label="Dropdown"
+                      component={DropdownFieldAdapter}
+                      options={list}
+                    />
+                    <Field
+                      name="date"
+                      label="Date"
+                      component={DateFieldAdapter}
                     />
                     <WarningEngine mutators={mutators} />
                   </Card>
