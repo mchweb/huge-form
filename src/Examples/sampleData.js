@@ -27,6 +27,30 @@ export const data = [
     website: "hildegard.org"
   },
   {
+    name: "Mrs. Dennis Schulist",
+    username: "Leopoldo",
+    email: "Karley_Dach@jasper.info",
+    phone: "1-477-935-8478 x6430",
+    website: "ola.org"
+  },
+  {
+    name: "Kurtis Weissnat",
+    username: "Elwyn.Skiles",
+    email: "Telly.Hoeger@billy.biz",
+    phone: "210.067.6132",
+    website: "elvis.io"
+  },
+  {
+    name: "Nicholas Runolfsdottir V",
+    username: "Maxime_Nienow",
+    email: "Sherwood@rosamond.me",
+    phone: "586.493.6943 x140",
+    website: "jacynthe.com"
+  },
+  
+];
+export const data2 = [
+  {
     name: "Ervin Howell",
     username: "Antonette",
     email: "Shanna@melissa.tv",
@@ -53,27 +77,6 @@ export const data = [
     email: "Lucio_Hettinger@annie.ca",
     phone: "(254)954-1289",
     website: "demarco.info"
-  },
-  {
-    name: "Mrs. Dennis Schulist",
-    username: "Leopoldo",
-    email: "Karley_Dach@jasper.info",
-    phone: "1-477-935-8478 x6430",
-    website: "ola.org"
-  },
-  {
-    name: "Kurtis Weissnat",
-    username: "Elwyn.Skiles",
-    email: "Telly.Hoeger@billy.biz",
-    phone: "210.067.6132",
-    website: "elvis.io"
-  },
-  {
-    name: "Nicholas Runolfsdottir V",
-    username: "Maxime_Nienow",
-    email: "Sherwood@rosamond.me",
-    phone: "586.493.6943 x140",
-    website: "jacynthe.com"
   },
   {
     name: "Glenna Reichert",
