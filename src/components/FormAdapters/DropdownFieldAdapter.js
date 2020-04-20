@@ -30,6 +30,8 @@ const DropdownFieldAdapter = ({
       }
       onType={(value) =>
         input.onChange({
+          ...input.value,
+          calculated: false,
           inputValue: value,
           required: requiredCalculated,
         })

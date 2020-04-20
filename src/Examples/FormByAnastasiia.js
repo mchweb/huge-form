@@ -119,6 +119,7 @@ const calculator = createDecorator(
             columnConfig: columnConfig_2,
             textField: "username",
             calculated: true,
+            inputValue: "",
           };
         }
         if (values.inputValue === "Set2") {
@@ -128,6 +129,7 @@ const calculator = createDecorator(
             columnConfig: columnConfig_3,
             textField: "email",
             calculated: true,
+            inputValue: "",
           };
         }
 

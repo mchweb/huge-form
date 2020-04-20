@@ -47,9 +47,20 @@ const SearchFieldAdapter = ({
       description={meta.error || meta.data.warning}
       textField={calculatedTextField}
       onChange={(value) =>
-        input.onChange({ inputValue: value[textField], fieldValue: value })
+        input.onChange({
+          ...input.value,
+          inputValue: value[textField],
+          fieldValue: value,
+        })
       }
-      onType={(value) => input.onChange({ inputValue: value })}
+      onType={(value) =>
+        input.onChange({
+          data: input.value.data,
+          columnConfig: input.value.columnConfig,
+          textField: input.value.textField,
+          inputValue: value,
+        })
+      }
       onBlur={(event) => input.onBlur(event)}
       data={calculatedData}
       columnConfig={calculatedColumnConfig}
