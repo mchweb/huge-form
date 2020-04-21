@@ -1,10 +1,11 @@
 import React from "react";
 import { Container, Row, Col } from "../components/Grid";
 import { Form, Field } from "react-final-form";
-import { list, columnConfig, data } from "../Examples/sampleData";
+import { list, columnConfig_t2_1, data_t2_1 } from "../Examples/sampleData";
 import {
   SearchFieldAdapter,
   DropdownFieldAdapter,
+  DateFieldAdapter,
 } from "../components/FormAdapters";
 import createDecorator from "final-form-calculate";
 import Card from "../components/Card";
@@ -28,8 +29,9 @@ const secondaryFieldsModificator = createDecorator({
       }
     },
     date: (dateValue, values) => {
-      if (!!values.lookup.fieldValue) {
-        return values.lookup.fieldValue.email;
+      const inputDate = new Date(dateValue.fieldValue.date);
+      if (!!inputDate) {
+        return { fieldValue: inputDate, calculated: true };
       }
     },
   },
@@ -37,58 +39,62 @@ const secondaryFieldsModificator = createDecorator({
 
 const App = () => {
   return (
-    <Base>
-      <Container>
-        <Form
-          initialValues={{}}
-          onSubmit={showResults}
-          decorators={[secondaryFieldsModificator]}
-          validate={(values) => {}}
-          render={({ handleSubmit, reset, values }) => (
-            <form autoComplete="nope">
-              <Row>
-                <Col size={4}>
-                  <Card title="Users Table">
-                    <Field
-                      name="lookup"
-                      label="Lookup"
-                      component={SearchFieldAdapter}
-                      textField={"name"}
-                      data={data}
-                      columnConfig={columnConfig}
-                      autoComplete="off"
-                    />
-                  </Card>
-                </Col>
-                <Col size={3}>
-                  <Card title="DropDown Field">
-                    <Field
-                      name="list"
-                      label="Dropdown"
-                      component={DropdownFieldAdapter}
-                      options={list}
-                      required={
-                        !!values.lookup && !!values.lookup.fieldValue
-                          ? true
-                          : false
-                      }
-                    />
-                  </Card>
-                  <Card title="Col2 date">
-                    <Field name="date" label="Email" component="input" />
-                  </Card>
-                </Col>
-                <Col size={4}>
-                  <Card title="values">
-                    <pre>{JSON.stringify(values, 0, 2)}</pre>
-                  </Card>
-                </Col>
-              </Row>
-            </form>
-          )}
-        ></Form>
-      </Container>
-    </Base>
+      <Base>
+        <Container>
+          <Form
+              initialValues={{}}
+              onSubmit={showResults}
+              decorators={[secondaryFieldsModificator]}
+              validate={(values) => {}}
+              render={({ handleSubmit, reset, values }) => (
+                  <form autoComplete="nope">
+                    <Row>
+                      <Col size={4}>
+                        <Card title="Users Table">
+                          <Field
+                              name="lookup"
+                              label="Lookup"
+                              component={SearchFieldAdapter}
+                              textField={"name"}
+                              data={data_t2_1}
+                              columnConfig={columnConfig_t2_1}
+                              autoComplete="off"
+                          />
+                        </Card>
+                      </Col>
+                      <Col size={3}>
+                        <Card title="DropDown Field">
+                          <Field
+                              name="list"
+                              label="Dropdown"
+                              component={DropdownFieldAdapter}
+                              options={list}
+                              required={
+                                !!values.lookup && !!values.lookup.fieldValue
+                                    ? true
+                                    : false
+                              }
+                          />
+                        </Card>
+                        <Card title="Col2 date">
+                          <Field
+                              name="date"
+                              label="Date"
+                              component={DateFieldAdapter}
+                          />
+                        </Card>
+                      </Col>
+                      <Col size={4}>
+                        <Card title="values">
+                          <pre>{JSON.stringify(values, 0, 2)}</pre>
+                        </Card>
+                      </Col>
+                    </Row>
+                  </form>
+              )}
+          ></Form>
+        </Container>
+      </Base>
   );
 };
 
