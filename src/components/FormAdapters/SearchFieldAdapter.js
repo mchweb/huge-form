@@ -51,6 +51,7 @@ const SearchFieldAdapter = ({
           ...input.value,
           inputValue: value[textField],
           fieldValue: value,
+          calculated: false,
         })
       }
       onType={(value) =>
@@ -58,6 +59,7 @@ const SearchFieldAdapter = ({
           data: input.value.data,
           columnConfig: input.value.columnConfig,
           textField: input.value.textField,
+          // calculated: false,
           inputValue: value,
         })
       }

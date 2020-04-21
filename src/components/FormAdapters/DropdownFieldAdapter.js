@@ -33,7 +33,6 @@ const DropdownFieldAdapter = ({
           ...input.value,
           calculated: false,
           inputValue: value,
-          required: requiredCalculated,
         })
       }
       onBlur={(event) => input.onBlur(event)}
