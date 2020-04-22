@@ -13,9 +13,9 @@ const SearchFieldAdapter = ({
   ...rest
 }) => {
   //TODO do not change input, make a new variable
-  if (rest && rest.data) {
+  if (data) {
     if (input.value && input.value.inputValue) {
-      if (!rest.data.find((row) => row[textField] === input.value.inputValue)) {
+      if (!data.find((row) => row[textField] === input.value.inputValue)) {
         input.value.inputValue = "";
       }
     }
@@ -56,10 +56,8 @@ const SearchFieldAdapter = ({
       }
       onType={(value) =>
         input.onChange({
-          data: input.value.data,
-          columnConfig: input.value.columnConfig,
-          textField: input.value.textField,
-          // calculated: false,
+          ...input.value,
+          calculated: false,
           inputValue: value,
         })
       }
