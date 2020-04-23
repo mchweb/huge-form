@@ -52,9 +52,9 @@ const SearchFieldAdapter = ({
       description={meta.error || meta.data.warning}
       textField={cTextField}
       onChange={value =>
-        input.onChange({ inputValue: value[textField], ...input.value, calculated: false })
+        input.onChange({ inputValue: value[textField] })
       }
-      onType={value => input.onChange({ inputValue: value, ...input.value, calculated: false })}
+      onType={value => input.onChange({ inputValue: value,})}
       onBlur={event => input.onBlur(event)}
       data={cData}
       columnConfig={cColumnConfig}
