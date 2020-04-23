@@ -90,3 +90,226 @@ export const data = [
     website: "ambrose.net"
   }
 ];
+
+export const groupsColumnConfig = [
+  { key: "persongroup", name: "Group", width: 120 },
+  { key: "themegroup", name: "Theme", width: 100 }
+];
+
+export const groups = [
+  {
+    persongroup: "friends",
+    themegroup: "too spicy"
+  },
+  {
+    persongroup: "friends",
+    themegroup: "spicy"
+  },
+  {
+    persongroup: "friends",
+    themegroup: "normal"
+  },
+  {
+    persongroup: "colleagues",
+    themegroup: "spicy"
+  },
+  {
+    persongroup: "friends",
+    themegroup: "madness"
+  },
+  {
+    persongroup: "colleagues",
+    themegroup: "normal"
+  },
+  {
+    persongroup: "parents",
+    themegroup: "normal"
+  },
+  {
+    persongroup: "boss",
+    themegroup: "normal"
+  },
+  {
+    persongroup: "parents",
+    themegroup: "a bit spicy"
+  },
+  {
+    persongroup: "creepies",
+    themegroup: "too normal, and not funny"
+  }
+];
+
+export const peopleColumnConfig = [
+  { key: "persongroup", name: "Group", width: 120 },
+  { key: "name", name: "Name", width: 100 }
+];
+
+export const people = [
+  {
+    persongroup: "friends",
+    name: "Donald Trump"
+  },
+  {
+    persongroup: "friends",
+    name: "Vladimir Putin"
+  },
+  {
+    persongroup: "friends",
+    name: "Angela Merkel"
+  },
+  {
+    persongroup: "colleagues",
+    name: "Michael Jackson"
+  },
+  {
+    persongroup: "friends",
+    name: "Qeen Elizabeth"
+  },
+  {
+    persongroup: "colleagues",
+    name: "Freddie Mercury"
+  },
+  {
+    persongroup: "parents",
+    name: "Mom"
+  },
+  {
+    persongroup: "parents",
+    name: "Dad"
+  },
+  {
+    persongroup: "creepies",
+    name: "Baba Clava"
+  }
+];
+
+export const memsColumnConfig = [
+  { key: "theme", name: "Theme", width: 120 },
+  { key: "description", name: "Description", width: 100 }
+];
+
+export const mems = [
+  {
+    theme: "too spicy",
+    description: "some racist mem"
+  },
+  {
+    theme: "too spicy",
+    description: "some really ugly joke"
+  },
+  {
+    theme: "too spicy",
+    description: "nude photo of person you know"
+  },
+  {
+    theme: "spicy",
+    description: "political joke"
+  },
+  {
+    theme: "spicy",
+    description: "joke about women"
+  },
+  {
+    theme: "normal",
+    description: "mem about COVID-19 epidemy"
+  },
+  {
+    theme: "normal",
+    description: "online game joke"
+  },
+  {
+    theme: "normal",
+    description: "mem about alcochol"
+  },
+  {
+    theme: "too normal, and not funny",
+    description: "eggs can fly ha ha ha"
+  }
+];
+
+export const dldataColumnConfig = [
+  { key: "listval", name: "Value", width: 120 },
+  { key: "date", name: "Date", width: 100 }
+];
+
+export const dateListData = [
+  {
+    listval: "option1",
+    date: "09/21/2020"
+  },
+  {
+    listval: "option2",
+    date: "09/22/2020"
+  },
+  {
+    listval: "option2",
+    date: "09/23/2020"
+  },
+  {
+    listval: "option3",
+    date: "09/24/2020"
+  },
+  {
+    listval: "option3",
+    date: "09/25/2020"
+  },
+  {
+    listval: "option1",
+    date: "09/26/2020"
+  }
+];
+
+export const dlOptions = [
+  "option1",
+  "option2",
+  "option3",
+  "option4"
+]
+
+export const setdColumnConfig = [
+  { key: "col1", name: "Col1", width: 120 },
+  { key: "col2", name: "Col2", width: 100 }
+];
+
+export const optionsSet = {
+  "option1": [{
+    col1: "Col1 option1 1",
+    col2: "Col2 option1 1"
+  },
+  {
+    col1: "Col1 option1 2",
+    col2: "Col2 option1 2"
+  },
+  {
+    col1: "Col1 option1 3",
+    col2: "Col2 option1 3"
+  },
+  {
+    col1: "Col1 option1 4",
+    col2: "Col2 option1 4"
+  }],
+  "option2": [{
+    col1: "Col1 option2 1",
+    col2: "Col2 option2 1"
+  },
+  {
+    col1: "Col1 option2 2",
+    col2: "Col2 option2 2"
+  }],
+  "option3": [{
+    col1: "Col1 option3 1",
+    col2: "Col2 option3 1"
+  },
+  {
+    col1: "Col1 option3 2",
+    col2: "Col2 option3 2"
+  },
+  {
+    col1: "Col1 option3 3",
+    col2: "Col2 option3 3"
+  }],
+  "option4": [{
+    col1: "Col1 option4 1",
+    col2: "Col2 option4 1"
+  }]
+}
