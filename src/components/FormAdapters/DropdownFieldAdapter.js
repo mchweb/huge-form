@@ -9,14 +9,16 @@ const DropdownFieldAdapter = ({
   inputProps,
   ...rest
 }) => {
+  
+  const requiredCalculated =
+    input.value && typeof input.value.required !== "undefined"
+      ? input.value.required
+      : required;
+
   return (
     <DropdownField
       disabled={input.value ? input.value.disabled : disabled}
-      required={
-        input.value && typeof input.value.required !== "undefined"
-          ? input.value.required
-          : required
-      }
+      required={requiredCalculated}
       inputProps={{
         ...input,
         ...inputProps

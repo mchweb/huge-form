@@ -9,6 +9,8 @@ const DateFieldAdapter = ({
   inputProps,
   ...rest
 }) => {
+  const calc = input.value && input.value.calculated /*? "true" : "false"*/;
+
   return (
     <DateField
       disabled={input.value ? input.value.disabled : disabled}
@@ -17,7 +19,7 @@ const DateFieldAdapter = ({
           ? input.value.required
           : required
       }
-      calculated={input.value && input.value.calculated}
+      calculated={calc}
       inputProps={{
         ...input,
         ...inputProps
@@ -27,8 +29,7 @@ const DateFieldAdapter = ({
       description={meta.error || meta.data.warning}
       onChange={value =>
         input.onChange({
-          inputValue: value.toISOString().slice(0, 10),
-          fieldValue: value
+          inputValue: value.toISOString().slice(0, 10)
         })
       }
       onType={value => input.onChange({ inputValue: value })}
