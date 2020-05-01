@@ -9,6 +9,7 @@ const DropdownFieldAdapter = ({
   inputProps,
   ...rest
 }) => {
+  //debugger;
   return (
     <DropdownField
       disabled={input.value ? input.value.disabled : disabled}
@@ -24,11 +25,18 @@ const DropdownFieldAdapter = ({
       hasWarning={meta.data.warning}
       hasError={meta.touched && meta.error}
       description={meta.error || meta.data.warning}
-      onChange={value =>
-        input.onChange({ inputValue: value, fieldValue: value })
-      }
-      onType={value => input.onChange({ inputValue: value })}
-      onBlur={event => input.onBlur(event)}
+      onChange={value => {
+        console.log("OnChange dropdown value:", value);
+        input.onChange({ ...input.value, inputValue: value, fieldValue: value, required: true })
+      }}
+      onType={value => {
+        console.log("OnType dropdown value:", value);
+
+        return input.onChange({ ...input.value, calculated: false, inputValue: value, fieldValue: value, required: true })
+      }}
+      onBlur={event => {
+        console.log("OnBlur dropdown event:", event); return input.onBlur(event)
+      }}
       {...rest}
     />
   );

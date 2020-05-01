@@ -37,7 +37,7 @@ class DateField extends React.Component {
   };
   componentDidUpdate(prevProps) {
     const { inputProps } = this.props;
-
+    //console.log('inputProps value', inputProps.value.fieldValue);
     if (inputProps && inputProps.value.calculated) {
       this.onType(inputProps.value.fieldValue.toISOString().slice(0, 10));
     }
@@ -70,8 +70,8 @@ class DateField extends React.Component {
               inline
             />
           ) : (
-            ""
-          )}
+              ""
+            )}
         </div>
       </BaseField>
     );

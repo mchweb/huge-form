@@ -9,8 +9,10 @@ const DateFieldAdapter = ({
   inputProps,
   ...rest
 }) => {
+  // console.log(input.value);
   return (
     <DateField
+
       disabled={input.value ? input.value.disabled : disabled}
       required={
         input.value && typeof input.value.required !== "undefined"
@@ -31,8 +33,14 @@ const DateFieldAdapter = ({
           fieldValue: value
         })
       }
-      onType={value => input.onChange({ inputValue: value })}
-      onBlur={event => input.onBlur(event)}
+      onType={value => {
+        console.log('on Type Date value =', value);
+        input.onChange({ inputValue: value })
+      }}
+      onBlur={event => {
+        console.log('onBlur event =', event);
+        input.onBlur(event)
+      }}
       {...rest}
     />
   );
